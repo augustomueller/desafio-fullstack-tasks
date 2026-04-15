@@ -4,18 +4,19 @@ require('dotenv').config();
 const taskRoutes = require('./routes/taskRoutes');
 
 const app = express();
-const PORT = process.env.PORT || 3001;
 
-app.use(cors());
+// Middlewares - IMPORTANTE: O cors vem antes de tudo!
+app.use(cors()); 
 app.use(express.json());
 
-// Importando as rotas da API
-app.use('/api', taskRoutes); 
+// Rotas
+app.use('/api', taskRoutes);
 
 app.get('/', (req, res) => {
-  res.send('To-Do List');
+    res.send('To-Do List API Funcionando!');
 });
 
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
-  console.log(`Porta do Servidor rodando em ${PORT}`);
+    console.log(`Servidor rodando na porta ${PORT}`);
 });

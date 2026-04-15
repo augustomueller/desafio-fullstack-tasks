@@ -4,10 +4,10 @@ const getTasks = async (req, res) => {
   try {
     const result = await db.query('SELECT * FROM tasks ORDER BY created_at DESC');
     res.status(200).json(result.rows);
-} catch (error) {
-  console.error("ERRO TÉCNICO:", error); 
-  res.status(500).json({ error: 'Erro ao buscar tarefas' });
-}
+  } catch (error) {
+    console.error("ERRO TÉCNICO:", error);
+    res.status(500).json({ error: 'Erro ao buscar tarefas' });
+  }
 };
 
 const createTask = async (req, res) => {
@@ -24,7 +24,7 @@ const createTask = async (req, res) => {
   }
 };
 
-// Atualizar status (Concluir tarefa)
+
 const updateTaskStatus = async (req, res) => {
   const { id } = req.params;
   const { completed } = req.body;
