@@ -24,4 +24,33 @@ const createTask = async (req, res) => {
   }
 };
 
-module.exports = { getTasks, createTask };
+// Atualizar status (Concluir tarefa)
+const updateTaskStatus = async (req, res) => {
+  const { id } = req.params;
+  const { completed } = req.body;
+  try {
+    const result = await db.query(
+      'UPDATE tasks SET completed = $1 WHERE id = $2 RETURNING *',
+      [completed, id]
+    );
+    if (result.rows.length === 0) return res.status(404).json({ error: 'Tarefa não encontrada' });
+    res.json(result.rows[0]);
+  } catch (error) {
+    res.status(500).json({ error: 'Erro ao atualizar' });
+  }
+};
+
+// Deletar tarefa
+const deleteTask = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const result = await db.query('DELETE FROM tasks WHERE id = $1 RETURNING *', [id]);
+    if (result.rows.length === 0) return res.status(404).json({ error: 'Tarefa não encontrada' });
+    res.json({ message: 'Tarefa removida com sucesso' });
+  } catch (error) {
+    res.status(500).json({ error: 'Erro ao excluir' });
+  }
+};
+
+module.exports = { getTasks, createTask, updateTaskStatus, deleteTask };
+
