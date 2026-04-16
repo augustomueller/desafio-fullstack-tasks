@@ -19,6 +19,11 @@ Antes de começar, você vai precisar ter instalado:
 - **Node.js** (versão 18 ou superior)
 - **Docker** e **Docker Compose**
 
+### Rodar os testes
+Na pasta `/backend`, execute:
+```bash
+npm test
+
 ## Como rodar o projeto na sua máquina:
 
 ### 1. Subir o Banco de Dados (Docker)
@@ -38,6 +43,25 @@ Entre na pasta `/frontend`:
 1. Instale as dependências: `npm install`
 2. Inicie a aplicação: `npm run dev`
 
+### 4. Rodar os Testes Unitários
+O projeto possui testes unitários implementados com Jest. Para rodar:
+Na pasta `/backend`, execute:
+```bash
+npm test
+```
+
+## 5. Exemplos de Chamadas à API
+Você pode testar os endpoints usando ferramentas como Insomnia/Postman ou via `curl`:
+
+- **Criar Tarefa (POST /tasks):**
+```json
+{
+  "title": "Estudar React",
+  "description": "Praticar hooks e componentes"
+}
+```
+- **Listar Tarefas (GET /tasks):** Retorna um array com todas as tarefas.
+
 ---
 
 Contato
@@ -49,3 +73,6 @@ LikedIn: www.linkedin.com/in/augusto-mueller-wendt-0074bb272
 
 Desenvolvido por Augusto.
 ```
+
+
+
