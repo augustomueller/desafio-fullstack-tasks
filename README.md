@@ -30,7 +30,7 @@ npm test
 Na pasta raiz do projeto, rode o comando para subir o container do banco:
 ```bash
 docker-compose up -d
-
+```
 
 ### 2. Configurar o Backend
 Entre na pasta `/backend`:
