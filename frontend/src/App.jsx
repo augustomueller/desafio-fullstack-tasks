@@ -11,12 +11,13 @@ function App() {
 
   const loadTasks = async () => {
     try {
-      const response = await api.get('/tasks')
-      setTasks(response.data)
+      const response = await api.get('/tasks');
+      const sortedTasks = response.data.sort((a, b) => a.completed - b.completed);
+      setTasks(sortedTasks);
     } catch (err) {
       toast.error("Erro ao carregar tarefas!");
     }
-  }
+  };
 
   useEffect(() => { loadTasks() }, [])
 
@@ -48,15 +49,16 @@ function App() {
   }
 
   const deleteTask = async (id) => {
-    try {
-      await api.delete(`/tasks/${id}`)
-      loadTasks()
-
-      toast.warn("Tarefa removida.");
-    } catch (err) {
-      toast.error("Erro ao deletar.");
+    if (window.confirm("Deseja realmente excluir esta tarefa?")) {
+      try {
+        await api.delete(`/tasks/${id}`);
+        loadTasks();
+        toast.warn("Tarefa removida.");
+      } catch (err) {
+        toast.error("Erro ao deletar.");
+      }
     }
-  }
+  };
 
   return (
     <div className="container">
