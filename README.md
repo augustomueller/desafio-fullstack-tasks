@@ -19,19 +19,6 @@ Antes de começar, você vai precisar ter instalado:
 - **Node.js** (versão 18 ou superior)
 - **Docker** e **Docker Compose**
 
-### Rodar os testes
-Na pasta `/backend`, execute:
-```bash
-npm test
-
-## Como rodar o projeto na sua máquina:
-
-### 1. Subir o Banco de Dados (Docker)
-Na pasta raiz do projeto, rode o comando para subir o container do banco:
-```bash
-docker-compose up -d
-```
-
 ### 2. Configurar o Backend
 Entre na pasta `/backend`:
 1. Instale as dependências: `npm install`
