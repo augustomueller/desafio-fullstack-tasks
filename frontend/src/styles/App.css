@@ -1,0 +1,127 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap');
+
+.container {
+  background-color: #F8F9FD;
+  min-height: 100vh;
+  padding: 40px 20px;
+  font-family: 'Sora', sans-serif;
+  color: #1A1D23;
+  display: flex;
+  justify-content: center;
+}
+
+.content {
+  width: 100%;
+  max-width: 500px;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: 700;
+  color: #1A1D23;
+}
+
+/* Formulário */
+.task-form {
+  background-color: #FFF;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(108, 99, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.task-form input {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #E2E8F0;
+  outline: none;
+  transition: border 0.3s;
+}
+
+.task-form input:focus {
+  border-color: #6C63FF;
+}
+
+.btn-add {
+  padding: 12px;
+  background-color: #6C63FF; 
+  color: #FFF;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-add:hover {
+  background-color: #5A52E5;
+  transform: translateY(-2px);
+}
+
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.task-card {
+  background-color: #FFF;
+  padding: 20px;
+  border-radius: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.2s;
+}
+
+.task-card:hover {
+  transform: scale(1.02);
+}
+
+.task-card.pending {
+  border-left: 6px solid #6C63FF;
+}
+
+.task-card.completed {
+  border-left: 6px solid #48BB78;
+}
+
+.task-info h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.task-info.done h3 {
+  text-decoration: line-through;
+  color: #A0AEC0;
+}
+
+.task-info p {
+  margin: 4px 0 0;
+  color: #718096;
+  font-size: 14px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-action {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  transition: transform 0.2s;
+}
+
+.btn-action:hover {
+  transform: scale(1.2);
+}
