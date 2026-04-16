@@ -73,4 +73,3 @@ Se tiver alguma dúvida sobre o código ou a implementação, pode me chamar:
 
 Desenvolvido por **Augusto**.
 
-````
