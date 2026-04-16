@@ -8,6 +8,11 @@ Projeto de uma lista de tarefas desenvolvido para o processo seletivo da SellFlu
 - **Banco de Dados:** PostgreSQL rodando via Docker.
 - **Estilização:** CSS focado na identidade visual da SellFlux (roxo e cards arredondados) e Toastify para os alertas de sucesso/erro.
 
+## Pré-requisitos
+Antes de começar, você vai precisar ter instalado:
+- **Node.js** (versão 18 ou superior)
+- **Docker** e **Docker Compose**
+
 ## Como rodar o projeto na sua máquina:
 
 ### 1. Subir o Banco de Dados (Docker)
