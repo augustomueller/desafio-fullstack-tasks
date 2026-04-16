@@ -56,7 +56,7 @@ Se tiver alguma dúvida sobre o código, pode me chamar:
 
 E-mail: muelleraugusto21@gmail.com
 
-LikedIn: www.linkedin.com/in/augusto-mueller-wendt-0074bb272
+LinkedIn: www.linkedin.com/in/augusto-mueller-wendt-0074bb272
 
 Desenvolvido por Augusto.
 ```
