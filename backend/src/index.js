@@ -1,22 +1,19 @@
-const express = require('express');
-const cors = require('cors');
 require('dotenv').config();
-const taskRoutes = require('./routes/taskRoutes');
-
-const app = express();
-
-
-app.use(cors()); 
-app.use(express.json());
-
-// Rotas
-app.use('/api', taskRoutes);
-
-app.get('/', (req, res) => {
-    res.send('To-Do List API Funcionando!');
-});
+const app = require('./app');
+const { initializeDatabase } = require('./models/db');
 
 const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
-    console.log(`Servidor rodando na porta ${PORT}`);
-});
+
+const startServer = async () => {
+  try {
+    await initializeDatabase();
+    app.listen(PORT, () => {
+      console.log(`Servidor rodando na porta ${PORT}`);
+    });
+  } catch (error) {
+    console.error('Falha ao iniciar a API:', error.message);
+    process.exit(1);
+  }
+};
+
+startServer();

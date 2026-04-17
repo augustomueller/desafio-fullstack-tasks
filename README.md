@@ -1,87 +1,94 @@
 # To-Do List Fullstack | Desafio SellFlux
 
-Este projeto é uma aplicação de gerenciamento de tarefas (CRUD) desenvolvida para o processo seletivo da SellFlux. O sistema permite criar, listar, marcar como concluído e excluir tarefas, com os dados persistidos em um banco PostgreSQL.
+Aplicacao fullstack de gerenciamento de tarefas com React no frontend, Node.js/Express no backend e PostgreSQL no banco de dados.
 
-## Como o projeto foi feito
-- **Arquitetura:** Modelo cliente-servidor. O frontend (React) faz requisições para o backend (Node.js) que gerencia as informações no banco de dados.
-- **Frontend:** Desenvolvido com React, Vite e Axios. Utiliza React-Toastify para feedbacks visuais de sucesso e erro.
-- **Backend:** Node.js com Express, estruturado com rotas e controladores para garantir a separação de responsabilidades.
-- **Banco de Dados:** PostgreSQL rodando via Docker para garantir que o ambiente seja o mesmo em qualquer máquina.
+## Stack
 
-## Pré-requisitos
-Antes de começar, você precisa ter instalado:
-- **Node.js** (versão 18 ou superior)
-- **Docker** e **Docker Compose**
+- Frontend: React + Vite + Axios + React Toastify
+- Backend: Node.js + Express + pg
+- Banco de dados: PostgreSQL via Docker Compose
 
-## Como rodar o projeto na sua máquina
+## Pre-requisitos
 
-### 1. Subir o ambiente (Docker)
-Na pasta raiz do projeto, execute o comando para subir o container do banco de dados:
+- Node.js 18 ou superior
+- Docker Desktop ou Docker Engine com Docker Compose
+
+## Como rodar
+
+### 1. Suba o banco de dados
+
+Na raiz do projeto:
+
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
-**Importante: Inicialização do Banco de Dados**
-**Após subir o container, você precisa criar as tabelas executando o comando abaixo no seu terminal:**
+O banco ja sobe com as credenciais corretas e a tabela `tasks` e garantida automaticamente na inicializacao do backend. Nao e necessario executar `init.sql` manualmente.
+
+### 2. Rode o backend
+
+Entre em [`backend`](./backend):
+
 ```bash
-docker exec -i tasks_db psql -U user_tasks -d tasks_management < init.sql
+npm install
+npm run dev
 ```
 
-### 2. Configurar o Backend
+Crie um arquivo `.env` em `backend` com base no `.env.example`.
 
-Entre na pasta `/backend`:
+Variaveis esperadas no `.env`:
 
-1.  Instale as dependências: `npm install`
-2.  Crie o arquivo `.env` baseado no `.env.example` presente na pasta.
-3.  Inicie o servidor: `npm run dev`
+```env
+PORT=3001
+DB_USER=user_tasks
+DB_PASSWORD=password_tasks
+DB_NAME=tasks_management
+DB_HOST=localhost
+DB_PORT=5432
+```
 
-### 3. Configurar o Frontend
+### 3. Rode o frontend
 
-Entre na pasta `/frontend`:
-
-1.  Instale as dependências: `npm install`
-2.  Inicie a aplicação: `npm run dev`
-
-### Testes Unitários
-
-O projeto possui testes unitários implementados com Jest, conforme solicitado no desafio.
-Para rodar os testes, acesse a pasta `/backend` e execute:
+Entre em [`frontend`](./frontend):
 
 ```bash
+npm install
+npm run dev
+```
+
+Crie um arquivo `.env` em `frontend` com base no `.env.example`.
+
+Variavel esperada no `.env` do frontend:
+
+```env
+VITE_API_URL=http://localhost:3001/api
+```
+
+## Enderecos padrao
+
+- Frontend: `http://localhost:5173`
+- Backend: `http://localhost:3001`
+- Healthcheck da API: `http://localhost:3001/health`
+
+## Testes
+
+Para rodar os testes do backend:
+
+```bash
+cd backend
 npm test
 ```
 
-## Exemplos de Chamadas à API
+Os testes validam as rotas reais da API com o banco mockado, cobrindo listagem, criacao, validacao e erro interno.
 
-Endpoints disponíveis para teste (via Insomnia, Postman ou curl):
+## Observacoes importantes
 
-  - **Criar Tarefa (POST /tasks):**
+- O arquivo [`init.sql`](./init.sql) continua no projeto e tambem pode ser usado pelo container do PostgreSQL em uma primeira subida limpa.
+- Se voce ja tiver um volume antigo do Postgres com estado inconsistente, rode `docker compose down -v` antes de subir novamente.
 
+## Endpoints
 
-
-```json
-{
-  "title": "Estudar React",
-  "description": "Praticar hooks e componentes"
-}
-```
-
-  - **Listar Tarefas (GET /tasks):** Retorna a lista completa de tarefas em formato JSON.
-
------
-
-## Contato
-
-Se tiver alguma dúvida sobre o código ou a implementação, pode me chamar:
-
-  - **E-mail:** muelleraugusto21@gmail.com
-  - **LinkedIn:** www.linkedin.com/in/augusto-mueller-wendt-0074bb272
-
-Desenvolvido por **Augusto**.
-
-
-
-
-
-
-
+- `GET /api/tasks`
+- `POST /api/tasks`
+- `PATCH /api/tasks/:id`
+- `DELETE /api/tasks/:id`
