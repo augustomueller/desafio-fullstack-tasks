@@ -21,6 +21,12 @@ Na pasta raiz do projeto, execute o comando para subir o container do banco de d
 docker-compose up -d
 ```
 
+**Importante: Inicialização do Banco de Dados**
+**Após subir o container, você precisa criar as tabelas executando o comando abaixo no seu terminal:**
+```bash
+docker exec -i tasks_db psql -U user_tasks -d tasks_management < init.sql
+```
+
 ### 2. Configurar o Backend
 
 Entre na pasta `/backend`:
@@ -72,4 +78,10 @@ Se tiver alguma dúvida sobre o código ou a implementação, pode me chamar:
   - **LinkedIn:** www.linkedin.com/in/augusto-mueller-wendt-0074bb272
 
 Desenvolvido por **Augusto**.
+
+
+
+
+
+
 

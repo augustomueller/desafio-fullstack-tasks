@@ -5,7 +5,7 @@ const taskRoutes = require('./routes/taskRoutes');
 
 const app = express();
 
-// Middlewares - IMPORTANTE: O cors vem antes de tudo!
+
 app.use(cors()); 
 app.use(express.json());
 
