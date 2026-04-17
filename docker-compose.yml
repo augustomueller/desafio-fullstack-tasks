@@ -1,18 +1,13 @@
-version: '3.8'
-services:
-  db:
-    image: postgres:15
-    container_name: tasks_db
-    restart: always
-    environment:
-      POSTGRES_USER: user_tasks
-      POSTGRES_PASSWORD: password_tasks
-      POSTGRES_DB: tasks_management
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql 
-
-volumes:
-  postgres_data:
+db:
+  image: postgres
+  container_name: tasks_db
+  restart: always
+  environment:
+    POSTGRES_USER: user_tasks
+    POSTGRES_PASSWORD: password_tasks
+    POSTGRES_DB: tasks_management
+  volumes:
+    - ./init.sql:/docker-entrypoint-initdb.d/init.sql  # <--- AUTO-EXECUÇÃO
+    - sellflux_tasks_data:/var/lib/postgresql/data
+  ports:
+    - "5432:5432"
