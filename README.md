@@ -1,6 +1,6 @@
 # To-Do List Fullstack | Desafio SellFlux
 
-Aplicacao fullstack de gerenciamento de tarefas com React no frontend, Node.js/Express no backend e PostgreSQL no banco de dados.
+Aplicação fullstack de gerenciamento de tarefas com React no frontend, Node.js/Express no backend e PostgreSQL no banco de dados.
 
 ## Stack
 
@@ -23,7 +23,7 @@ Na raiz do projeto:
 docker compose up -d
 ```
 
-Esse comando sobe o PostgreSQL e o backend. O banco ja sobe com as credenciais corretas e a tabela `tasks` e garantida automaticamente na inicializacao. Nao e necessario executar `init.sql` manualmente.
+Esse comando sobe o PostgreSQL e o backend. O banco ja sobe com as credenciais corretas e a tabela `tasks` é garantida automaticamente na inicialização. Não é necessário executar `init.sql` manualmente.
 
 ### 2. Rode o backend localmente
 
@@ -64,7 +64,7 @@ Variavel esperada no `.env` do frontend:
 VITE_API_URL=http://localhost:3001/api
 ```
 
-## Enderecos padrao
+## Enderecos padrão
 
 - Frontend: `http://localhost:5173`
 - Backend: `http://localhost:3001`
@@ -79,7 +79,7 @@ cd backend
 npm test
 ```
 
-Os testes validam as rotas reais da API com o banco mockado, cobrindo listagem, criacao, validacao e erro interno.
+Os testes validam as rotas reais da API com o banco mockado, cobrindo listagem, criação, validação e erro interno.
 
 ## Observacoes importantes
 
@@ -122,3 +122,40 @@ Excluir tarefa:
 ```bash
 curl -X DELETE http://localhost:3001/api/tasks/1
 ```
+```
+
+-----
+
+## 📂 Estrutura do Banco de Dados
+
+O banco de dados é inicializado automaticamente com a seguinte estrutura:
+
+  * `id`: Serial (Primary Key)
+  * `title`: Varchar(255)
+  * `description`: Text
+  * `completed`: Boolean (Default: false)
+  * `created_at`: Timestamp
+
+-----
+
+## 🛠️ Troubleshooting (Resolução de Problemas)
+
+**Erro 500 ou Falha de Conexão com o Banco:**
+
+1.  Verifique se a porta **5432** não está sendo usada por outro serviço de PostgreSQL local.
+2.  Caso tenha ocorrido algum erro na primeira inicialização, limpe os volumes do Docker e tente novamente:
+    ```bash
+    docker-compose down -v
+    docker-compose up -d
+    ```
+
+-----
+
+## Desenvolvido por:
+
+**Augusto**
+
+  * **GitHub:** https://github.com/augustomueller
+  * **LinkedIn:** www.linkedin.com/in/augusto-mueller-wendt-0074bb272
+
+-----
