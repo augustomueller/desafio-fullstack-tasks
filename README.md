@@ -8,7 +8,7 @@ Aplicação fullstack de gerenciamento de tarefas com React no frontend, Node.js
 - Backend: Node.js + Express + pg
 - Banco de dados: PostgreSQL via Docker Compose
 
-## Pre-requisitos
+## Pré-requisitos
 
 - Node.js 18 ou superior
 - Docker Desktop ou Docker Engine com Docker Compose
