@@ -2,7 +2,7 @@
 
 Aplicação fullstack de gerenciamento de tarefas com React no frontend, Node.js/Express no backend e PostgreSQL no banco de dados.
 
-## Stack
+## Como foi feito
 
 - Frontend: React + Vite + Axios + React Toastify
 - Backend: Node.js + Express + pg
