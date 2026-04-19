@@ -14,12 +14,33 @@ function App() {
       const response = await api.get('/tasks');
       const sortedTasks = response.data.sort((a, b) => a.completed - b.completed);
       setTasks(sortedTasks);
-    } catch (err) {
+    } catch {
       toast.error("Erro ao carregar tarefas!");
     }
   };
 
-  useEffect(() => { loadTasks() }, [])
+  useEffect(() => {
+    let isMounted = true;
+
+    const fetchTasks = async () => {
+      try {
+        const response = await api.get('/tasks');
+        const sortedTasks = response.data.sort((a, b) => a.completed - b.completed);
+
+        if (isMounted) {
+          setTasks(sortedTasks);
+        }
+      } catch {
+        toast.error("Erro ao carregar tarefas!");
+      }
+    };
+
+    fetchTasks();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -31,7 +52,7 @@ function App() {
       setDescription('')
       loadTasks()
       toast.success("Tarefa adicionada.");
-    } catch (err) {
+    } catch {
       toast.error("Erro ao salvar tarefa.");
     }
   }
@@ -43,7 +64,7 @@ function App() {
       if (!completed) {
         toast.info("Tarefa concluída");
       }
-    } catch (err) {
+    } catch {
       toast.error("Erro ao atualizar.");
     }
   }
@@ -54,7 +75,7 @@ function App() {
         await api.delete(`/tasks/${id}`);
         loadTasks();
         toast.warn("Tarefa removida.");
-      } catch (err) {
+      } catch {
         toast.error("Erro ao deletar.");
       }
     }

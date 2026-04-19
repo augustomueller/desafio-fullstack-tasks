@@ -15,7 +15,7 @@ Aplicacao fullstack de gerenciamento de tarefas com React no frontend, Node.js/E
 
 ## Como rodar
 
-### 1. Suba o banco de dados
+### 1. Suba a stack com Docker Compose
 
 Na raiz do projeto:
 
@@ -23,9 +23,9 @@ Na raiz do projeto:
 docker compose up -d
 ```
 
-O banco ja sobe com as credenciais corretas e a tabela `tasks` e garantida automaticamente na inicializacao do backend. Nao e necessario executar `init.sql` manualmente.
+Esse comando sobe o PostgreSQL e o backend. O banco ja sobe com as credenciais corretas e a tabela `tasks` e garantida automaticamente na inicializacao. Nao e necessario executar `init.sql` manualmente.
 
-### 2. Rode o backend
+### 2. Rode o backend localmente
 
 Entre em [`backend`](./backend):
 
@@ -92,3 +92,33 @@ Os testes validam as rotas reais da API com o banco mockado, cobrindo listagem, 
 - `POST /api/tasks`
 - `PATCH /api/tasks/:id`
 - `DELETE /api/tasks/:id`
+
+## Exemplos de chamadas da API
+
+Listar tarefas:
+
+```bash
+curl http://localhost:3001/api/tasks
+```
+
+Criar tarefa:
+
+```bash
+curl -X POST http://localhost:3001/api/tasks \
+  -H "Content-Type: application/json" \
+  -d "{\"title\":\"Estudar Node.js\",\"description\":\"Revisar rotas e controllers\"}"
+```
+
+Atualizar status de uma tarefa:
+
+```bash
+curl -X PATCH http://localhost:3001/api/tasks/1 \
+  -H "Content-Type: application/json" \
+  -d "{\"completed\":true}"
+```
+
+Excluir tarefa:
+
+```bash
+curl -X DELETE http://localhost:3001/api/tasks/1
+```
